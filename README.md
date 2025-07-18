@@ -44,3 +44,11 @@ npm install --save compression
 npm i --save mongoose
 npm install --save mongoose
 ```
+
+## Section 3: Install file env
+
+**_Install .env_**
+
+```bash
+require("dotenv").config()
+```
