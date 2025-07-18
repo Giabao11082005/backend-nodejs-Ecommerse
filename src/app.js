@@ -19,14 +19,7 @@ require("./databases/init.mongodb");
 // checkOverLoad();
 
 //init routes
-app.get("/", (req, res, next) => {
-  // const strCompression = "Test compression performance";
-  return res.status(200).json({
-    message: "Test Middleware",
-    // metadata: strCompression.repeat(20000),
-  });
-});
-
+app.use("", require("./routes"));
 //handle error
 
 module.exports = app;
