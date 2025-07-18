@@ -1,22 +1,27 @@
 const express = require("express");
 const morgan = require("morgan");
-const helmet = require("helmet");
+const { default: helmet } = require("helmet");
 const compression = require("compression");
 const app = express();
+const mongoose = require("mongoose");
 
 //init middleware
 app.use(morgan("dev")); //logs
 app.use(helmet()); //private technology
-app.use(compression);
+app.use(compression());
 
 //init database
+require("./databases/init.mongodb");
+// ==> check overload
+const { checkOverLoad } = require("./helpers/check.connect");
+checkOverLoad();
 
 //init routes
 app.get("/", (req, res, next) => {
-  const strCompression = "Test compression performance";
+  // const strCompression = "Test compression performance";
   return res.status(200).json({
     message: "Test Middleware",
-    metadata: strCompression.repeat(20000),
+    // metadata: strCompression.repeat(20000),
   });
 });
 
