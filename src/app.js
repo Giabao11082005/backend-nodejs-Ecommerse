@@ -11,6 +11,8 @@ const app = express();
 app.use(morgan("dev")); //logs
 app.use(helmet()); //private technology
 app.use(compression());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //init database
 require("./databases/init.mongodb");
